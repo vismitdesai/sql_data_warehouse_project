@@ -1,0 +1,68 @@
+Loading Data
+
+Example BULK INSERT command:
+
+BULK INSERT bronze.crm_cust_info
+FROM 'C:\SQLData\cust_info.csv'
+WITH (
+    FORMAT = 'CSV',
+    FIRSTROW = 2,
+    TABLOCK
+);
+
+If using an older version of SQL Server:
+
+BULK INSERT bronze.crm_cust_info
+FROM 'C:\SQLData\cust_info.csv'
+WITH (
+    FIRSTROW = 2,
+    FIELDTERMINATOR = ',',
+    ROWTERMINATOR = '\n',
+    TABLOCK
+);
+Prerequisites
+
+Before running the project, ensure you have:
+
+SQL Server 2019 or later (SQL Server 2022 recommended)
+SQL Server Management Studio (SSMS)
+Read permission on the dataset folder
+CSV files stored in a local directory accessible by SQL Server
+Setup Instructions
+Clone the repository.
+Open SQL Server Management Studio.
+Execute create_database.sql.
+Execute create_tables.sql.
+Update the CSV file paths in load_bronze.sql.
+Run the Bronze layer load scripts.
+Execute the Silver transformation scripts.
+Create the Gold layer views.
+Common Issues
+Cannot bulk load because the file could not be opened
+
+Possible causes:
+
+Incorrect file path
+SQL Server service account lacks permission
+OneDrive file is not available offline
+File is currently open in another application
+Data Import Errors
+
+Check that:
+
+The CSV file contains a header row.
+All rows have the same number of columns.
+The correct field and row terminators are specified.
+Data types match the destination table.
+Future Enhancements
+Automated ETL using SQL Server Agent
+Incremental data loading
+Error logging
+Data validation framework
+Power BI dashboards
+Stored procedures for automated ingestion
+Author
+
+Vismit Desai
+
+Procurement and Supply Chain Professional transitioning into Data Analytics and Data Engineering.
